@@ -58,7 +58,7 @@ int Course::getHwGrade(int hmwNum) {
 Function name	: Course::getHwAverage()
 Description		: calculates the homework average of the course
 Paramerters		: none
-Return value	: double- the average
+Return value	: double - the average
 ************************************************************************/
 double Course::getHwAverage() {
 	double  sum = 0;
@@ -82,7 +82,6 @@ Description		: calculates the total grade of the course by the formula:
 Paramerters		: none
 Return value	: int - the grade
 ************************************************************************/
-
 int Course::getCourseGrade() {
 	if (examGrade_ != NO_GRADE) {
 			double grade = (1 - hmwWeight_) * examGrade_ + hmwWeight_ * getHwAverage();
@@ -118,7 +117,6 @@ Description		: sets the grade of a homework assignment with number specified
 Paramerters		: hmwNum - homework number, hmwGrade - homework grade
 Return value	: Result - SUCCESS if executed successfully, FAILURE otherwise
 ************************************************************************/
-
 Result Course::setHwGrade(int hmwNum, int hmwGrade) {
 	if ((hmwNum >= 0) && hmwNum < numOfHmw_) {
 		hmwGrades_[hmwNum] = hmwGrade;

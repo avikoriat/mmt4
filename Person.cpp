@@ -7,7 +7,7 @@
 using std::cerr;
 using std::endl;
 
-
+//constructor
 Person::Person(int id, char* name) :
 	id_(id)
 {
@@ -19,12 +19,19 @@ Person::Person(int id, char* name) :
 	strcpy(name_, name);
 }
 
-
+//destructor
 Person::~Person()
 {
 	delete[] name_;
 }
 
+/*************************************************************************
+Function name	: Person::getName()
+Description		: returns a new allocated string that contains the name 
+				of the person
+Paramerters		: none
+Return value	: char* - a pointer to an array of the string
+************************************************************************/
 char* Person::getName() {
 	char* name = new char[strlen(name_) + 1];
 	strcpy(name, name_);

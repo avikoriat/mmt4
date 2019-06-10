@@ -9,6 +9,7 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
+//constructor
 Student::Student(int id, char* name):
 	Person(id, name),eeCourseCnt_(0),csCourseCnt_(0)
 {
@@ -18,7 +19,7 @@ Student::Student(int id, char* name):
 	}
 }
 
-
+//destructor
 Student::~Student()
 {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
@@ -28,6 +29,12 @@ Student::~Student()
 	
 }
 
+/*************************************************************************
+Function name	: Student::addEE_Course()
+Description		: adds new EE Course to the student
+Paramerters		: peeCourse - pointer to the new EE Course
+Return value	: Result - SUCCESS if executed successfully, FAILURE otherwise
+************************************************************************/
 Result Student::addEE_Course(EE_Course* peeCourse) {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
 		if (peeCourses_[i] == NULL) {
@@ -39,6 +46,12 @@ Result Student::addEE_Course(EE_Course* peeCourse) {
 	return FAILURE;
 }
 
+/*************************************************************************
+Function name	: Student::addCS_Course()
+Description		: adds new CS Course to the student
+Paramerters		: pcsCourse - pointer to the new CS Course
+Return value	: Result - SUCCESS if executed successfully, FAILURE otherwise
+************************************************************************/
 Result Student::addCS_Course(CS_Course* pcsCourse) {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
 		if (pcsCourses_[i] == NULL) {
@@ -50,6 +63,12 @@ Result Student::addCS_Course(CS_Course* pcsCourse) {
 	return FAILURE;
 }
 
+/*************************************************************************
+Function name	: Student::remCourse()
+Description		: removes course from the student's courses
+Paramerters		: courseNum - Course number
+Return value	: Result - SUCCESS if there is a course with this number, FAILURE otherwise
+************************************************************************/
 Result Student::remCourse(int courseNum) {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
 		if (pcsCourses_[i] != NULL) {
@@ -72,6 +91,13 @@ Result Student::remCourse(int courseNum) {
 	return FAILURE;
 }
 
+/*************************************************************************
+Function name	: Student::getEE_Course()
+Description		: returns a pointer to the EE Course studied by the student
+Paramerters		: eeCourseNum - EE Course number
+Return value	: EE_Course* - a pointer to the EE Course if there is a 
+		course with this number, NULL otherwise
+************************************************************************/
 EE_Course* Student::getEE_Course(int eeCourseNum) {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
 		if (peeCourses_[i] != NULL) {
@@ -83,6 +109,13 @@ EE_Course* Student::getEE_Course(int eeCourseNum) {
 	return NULL;
 }
 
+/*************************************************************************
+Function name	: Student::getCS_Course()
+Description		: returns a pointer to the CS Course studied by the student
+Paramerters		: csCourseNum - CS Course number
+Return value	: CS_Course* - a pointer to the CS Course if there is a 
+		course with this number, NULL otherwise
+************************************************************************/
 CS_Course* Student::getCS_Course(int csCourseNum) {
 	for (int i = 0; i < MAX_COURSE_NUM; i++) {
 		if (pcsCourses_[i] != NULL) {
@@ -94,6 +127,13 @@ CS_Course* Student::getCS_Course(int csCourseNum) {
 	return NULL;
 }
 
+/*************************************************************************
+Function name	: Student::getAvg()
+Description		: calculates the average grade of the student by the formula:
+	average_grade = round( sum_of_grades_in_all_courses / number_of_courses )
+Paramerters		: none
+Return value	: int - the average grade
+************************************************************************/
 int Student::getAvg() {
 	double sum = 0;
 	int courseCnt = 0;
@@ -128,6 +168,24 @@ int Student::getAvg() {
 	}
 }
 
+/*************************************************************************
+Function name	: Student::print()
+Description		: prints the data of the student by the format:
+	SName: student_name
+	SID: student_id
+	Avg.: average_grade
+	
+	EE:
+	course_number course_name course_grade
+	…
+
+	CS courses:
+	course_number course_name course_grade
+	…
+
+Paramerters		: none
+Return value	: none
+************************************************************************/
 void Student::print() {
 	char* studentName = getName();
 	cout << "Student name: " << studentName << endl;

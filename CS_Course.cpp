@@ -44,8 +44,8 @@ char* CS_Course::getBook() {
 }
 
 /*************************************************************************
-Function name	: CS_Course::getBook()
-Description		:sets the name of course book to be 'bookName'
+Function name	: CS_Course::setBook()
+Description		: sets the name of course book to be 'bookName'
 Paramerters		: bookName - a string containing the course-book name
 Return value	: none
 ************************************************************************/
